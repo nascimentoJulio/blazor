@@ -10,5 +10,7 @@ namespace DashJobs.Repository.Users
     public interface IUsersRepository
     {
         Task Insert(User user);
+
+        Task<User> GetUserByEmail(string email);
     }
 }

@@ -404,3 +404,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/DashJobs/.vs/DashJobs/DesignTimeBuild/.dtbcache.v2
+/DashJobs/.vs/DashJobs/v17/.suo

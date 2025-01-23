@@ -16,6 +16,19 @@ namespace DashJobs.Repository.Users
         {
         }
 
+        public async Task<User> GetUserByEmail(string email)
+        {
+            return await GetById(@"SELECT
+                                    id as Id, 
+                                    created_at as CreatedAt, 
+                                    username as Username, 
+                                    email as Email, 
+                                    password as Password, 
+                                    role as Roles
+                                   FROM user
+                                   WHERE Email = @Emmail",  new { Email = email } );
+        }
+
         public async Task Insert(User user)
         {
             await _connection.ExecuteAsync(@"INSERT INTO users
