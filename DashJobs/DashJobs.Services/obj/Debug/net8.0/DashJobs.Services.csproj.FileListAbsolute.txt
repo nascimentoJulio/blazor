@@ -1,0 +1,15 @@
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.csproj.AssemblyReference.cache
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.AssemblyInfoInputs.cache
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.AssemblyInfo.cs
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.csproj.CoreCompileInputs.cache
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\bin\Debug\net8.0\DashJobs.Services.deps.json
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\bin\Debug\net8.0\DashJobs.Services.dll
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\bin\Debug\net8.0\DashJobs.Services.pdb
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\bin\Debug\net8.0\DashJobs.Repository.dll
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\bin\Debug\net8.0\DashJobs.Repository.pdb
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.371033C9.Up2Date
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.dll
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\refint\DashJobs.Services.dll
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\DashJobs.Services.pdb
+C:\Users\julio.nascimento\source\repos\DashJobs\DashJobs.Services\obj\Debug\net8.0\ref\DashJobs.Services.dll

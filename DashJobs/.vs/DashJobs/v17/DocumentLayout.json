@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{67209DCE-21DC-4640-9B9D-B41A30B8EF81}|DashJobs\\DashJobs.csproj|c:\\users\\julio.nascimento\\source\\repos\\dashjobs\\dashjobs\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{67209DCE-21DC-4640-9B9D-B41A30B8EF81}|DashJobs\\DashJobs.csproj|solutionrelative:dashjobs\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E444D98-5CAB-4F5B-910A-1B019A23B4CB}|DashJobs.Repository\\DashJobs.Repository.csproj|c:\\users\\julio.nascimento\\source\\repos\\dashjobs\\dashjobs.repository\\users\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E444D98-5CAB-4F5B-910A-1B019A23B4CB}|DashJobs.Repository\\DashJobs.Repository.csproj|solutionrelative:dashjobs.repository\\users\\usersrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EDE616F5-AB79-4B4E-A7EB-5828F56BD181}|DashJobs.Services\\DashJobs.Services.csproj|c:\\users\\julio.nascimento\\source\\repos\\dashjobs\\dashjobs.services\\users\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EDE616F5-AB79-4B4E-A7EB-5828F56BD181}|DashJobs.Services\\DashJobs.Services.csproj|solutionrelative:dashjobs.services\\users\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "DashJobs\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "DashJobs\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB8AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-23T00:11:16.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersRepository.cs",
+              "DocumentMoniker": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs.Repository\\Users\\UsersRepository.cs",
+              "RelativeDocumentMoniker": "DashJobs.Repository\\Users\\UsersRepository.cs",
+              "ToolTip": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs.Repository\\Users\\UsersRepository.cs",
+              "RelativeToolTip": "DashJobs.Repository\\Users\\UsersRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAIwBcAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T23:39:29.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs.Services\\Users\\UserService.cs",
+              "RelativeDocumentMoniker": "DashJobs.Services\\Users\\UserService.cs",
+              "ToolTip": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs.Services\\Users\\UserService.cs",
+              "RelativeToolTip": "DashJobs.Services\\Users\\UserService.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAApwCYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T23:38:50.47Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

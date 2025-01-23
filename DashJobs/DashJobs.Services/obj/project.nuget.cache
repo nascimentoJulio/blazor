@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ha79auXUFj0=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs.Services\\DashJobs.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\julio.nascimento\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\julio.nascimento\\.nuget\\packages\\libsodium\\1.0.19\\libsodium.1.0.19.nupkg.sha512",
+    "C:\\Users\\julio.nascimento\\.nuget\\packages\\sodium.core\\1.3.5\\sodium.core.1.3.5.nupkg.sha512"
+  ],
+  "logs": []
+}

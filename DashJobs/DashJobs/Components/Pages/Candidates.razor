@@ -1,0 +1,52 @@
+﻿@page "/candidates"
+@using DashJobs.Services.Candidates
+@using Dashclass.Model
+@attribute [StreamRendering]
+
+<PageTitle>Candidates</PageTitle>
+
+@if (IsLoading)
+{
+    <h1>Loading...</h1>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Senioridade</th>
+                <th>ID - VAGA</th>
+                <th>Especialidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var candate in candidates)
+            {
+                <tr>
+                    <td>@candate.Name</td>
+                    <td>@candate.Seniority</td>
+                    <td>@candate.VacancyId</td>
+                    <td>@candate.Specialty</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Inject]
+    public ICandidatesService _candidatesService { get; set; }
+
+    public IEnumerable<Candidate> candidates { get; set; }
+
+    public bool IsLoading = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        IsLoading = true;
+        candidates = await _candidatesService.GetCandidates();
+        IsLoading = false;
+    }
+
+}

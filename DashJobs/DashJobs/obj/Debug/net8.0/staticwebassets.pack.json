@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DashJobs.bundle.scp.css",
+      "PackagePath": "staticwebassets\\DashJobs.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\julio.nascimento\\source\\repos\\DashJobs\\DashJobs\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.DashJobs.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.DashJobs.props",
+      "PackagePath": "build\\DashJobs.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DashJobs.props",
+      "PackagePath": "buildMultiTargeting\\DashJobs.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.DashJobs.props",
+      "PackagePath": "buildTransitive\\DashJobs.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,24 @@
+﻿@page "/"
+@using DashJobs.Components.SharedComponents
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<Button OnClick="handleClick">Clique ai</Button>
+
+@Message
+
+@code {
+    public string Message = "";
+
+    public void handleClick()
+    {
+        Console.WriteLine("caiu");
+        Message = string.IsNullOrEmpty(Message) ? "Clicou" : "";
+        StateHasChanged();
+    }
+}
