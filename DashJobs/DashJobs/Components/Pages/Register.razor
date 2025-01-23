@@ -1,0 +1,87 @@
+﻿@page "/register"
+@using System.ComponentModel.DataAnnotations
+@using Services.Dto
+@using DashJobs.Services.Users
+@inject IUserService UserService
+
+<h3>User Form</h3>
+
+
+<EditForm Model="UserModel" OnSubmit="HandleValidSubmit" FormName="UserForm">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="UserModel.Email" class="form-control" />
+        <ValidationMessage For="@(() => UserModel.Email)" />
+    </div>
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <InputText id="username" @bind-Value="UserModel.Username" class="form-control" />
+        <ValidationMessage For="@(() => UserModel.Username)" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="UserModel.Password" type="password" class="form-control" />
+        <ValidationMessage For="@(() => UserModel.Password)" />
+    </div>
+
+    <div class="form-group form-check">
+        <InputCheckbox id="isAdmin" @bind-Value="UserModel.IsAdmin" class="form-check-input" />
+        <label for="isAdmin" class="form-check-label">Is Admin</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <ValidationSummary />
+</EditForm>
+
+@if (SubmissionResult != null)
+{
+    <p>@SubmissionResult</p>
+}
+
+@code {
+    [SupplyParameterFromForm]
+    private UserFormModel UserModel { get; set; }
+    private string? SubmissionResult;
+
+    protected override void OnInitialized() => UserModel ??= new();
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+
+            await UserService.CreateUser(new CreateUserDto
+                {
+                    Email = UserModel.Email,
+                    Username = UserModel.Username,
+                    Password = UserModel.Password,
+                    IsAdmin = UserModel.IsAdmin
+                });
+
+            SubmissionResult = "User successfully added!";
+        }
+        catch (Exception ex)
+        {
+            SubmissionResult = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    public class UserFormModel
+    {
+
+        public string Email { get; set; } = string.Empty;
+
+
+        public string Username { get; set; } = string.Empty;
+
+        public string Password { get; set; } = string.Empty;
+
+        public bool IsAdmin { get; set; }
+    }
+}
+
+
