@@ -10,5 +10,7 @@ namespace DashJobs.Services.Users
     public interface IUserService
     {
         Task CreateUser(CreateUserDto createUserDto);
+
+        Task<Guid> Login(string email, string password);
     }
 }

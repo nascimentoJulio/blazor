@@ -2,6 +2,7 @@ using Dashclass.Model;
 using DashJobs.Components;
 using DashJobs.Repository;
 using DashJobs.Repository.Candidates;
+using DashJobs.Repository.Sessions;
 using DashJobs.Repository.Users;
 using DashJobs.Services.Candidates;
 using DashJobs.Services.Users;
@@ -23,6 +24,7 @@ services.AddScoped<ICandidatesRepository, CandidatesRepository>();
 services.AddScoped<IUsersRepository, UsersRepository>();
 services.AddScoped<IUserService,UserService>();
 services.AddScoped<ICandidatesService, CandidatesService>();
+services.AddScoped<ISessionRepository, SessionRepository>();
 
 
 var app = builder.Build();

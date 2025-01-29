@@ -1,0 +1,88 @@
+﻿@page "/register"
+@rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations
+@using DashJobs.Services.Dto
+@using DashJobs.Services.Users
+@inject IUserService IUserService;
+
+<PageTitle>User form</PageTitle>
+<h3>User Form</h3>
+
+<EditForm Model="formModel" OnValidSubmit="handleSubmit" FormName="userForm">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="formModel.Email" class="form-control" />
+        <ValidationMessage For="@(() => formModel.Email)" />
+    </div>
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <InputText id="username" @bind-Value="formModel.Username" class="form-control" />
+        <ValidationMessage For="@(() => formModel.Username)" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="formModel.Password" type="password" class="form-control" />
+        <ValidationMessage For="@(() => formModel.Password)" />
+    </div>
+
+    <div class="form-group form-check">
+        <InputCheckbox id="isAdmin" @bind-Value="formModel.IsAdmin" class="form-check-input" />
+        <label for="isAdmin" class="form-check-label">Is Admin</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <ValidationSummary />
+</EditForm>
+
+@if(!string.IsNullOrEmpty(apiResult))
+{
+    <p>@apiResult</p>
+}
+
+@code {
+    [SupplyParameterFromForm]
+    private FormModel formModel { get; set; }
+
+    private string apiResult { get; set; }
+
+    protected override void OnInitialized() => formModel ??= new();
+
+    private async Task handleSubmit()
+    {
+        try
+        {
+            apiResult = "Carregando...";
+            await IUserService.CreateUser(new CreateUserDto
+                {
+                    Email = formModel.Email,
+                    Username = formModel.Username,
+                    Password = formModel.Password,
+                    IsAdmin = formModel.IsAdmin,
+                });
+            apiResult = "Usuário criado com sucesso...";
+        }
+        catch (Exception e)
+        {
+            apiResult = $"Erro ao criar usuário: {e.Message}";
+        }
+    }
+
+    public class FormModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string Username { get; set; } = string.Empty;
+
+        [Required]
+        [MinLength(8)]
+        public string Password { get; set; } = string.Empty;
+
+        [Required]
+        public bool IsAdmin { get; set; }
+    }
+}
