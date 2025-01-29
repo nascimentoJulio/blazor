@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -13,14 +14,17 @@ namespace DashJobs.Repository.Session
         {
         }
 
-        public Task CreateSession(Guid userId, string session_code)
+        public async Task CreateSession(Guid userId, Guid sessionCode)
         {
-            throw new NotImplementedException();
+            await _connection.ExecuteAsync(@"INSERT INTO sessions
+                                (user_id, session_code)
+                           VALUES
+                                (@UserId,@SessionCode)", new { UserId = userId, SessionCode = sessionCode });
         }
 
         public async Task ExpiressSessions(Guid userId)
         {
-            await Update(@"UPDATE sessions
+            await _connection.ExecuteAsync(@"UPDATE sessions
                            SET expired = true
                            where user_id = @UserId", new { UserId = userId });
         }

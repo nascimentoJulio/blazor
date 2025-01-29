@@ -25,8 +25,8 @@ namespace DashJobs.Repository.Users
                                     email as Email, 
                                     password as Password, 
                                     role as Roles
-                                   FROM user
-                                   WHERE Email = @Emmail",  new { Email = email } );
+                                   FROM users
+                                   WHERE Email = @Email",  new { Email = email } );
         }
 
         public async Task Insert(User user)

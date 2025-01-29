@@ -77,8 +77,7 @@ namespace DashJobs.Services.Users
 
         private bool ComparePassword(string userPassword, string requestPassword)
         {
-            var hashedPassword = HashPassword(requestPassword);
-            return hashedPassword.Equals(userPassword);
+            return PasswordHash.ArgonHashStringVerify(userPassword, requestPassword);
         }
 
     }

@@ -8,6 +8,6 @@ namespace DashJobs.Repository.Session
         Task ExpiressSessions(Guid userId);
 
 
-        Task CreateSession(Guid userId, Guid session_code);
+        Task CreateSession(Guid userId, Guid sessionCode);
     }
 }
