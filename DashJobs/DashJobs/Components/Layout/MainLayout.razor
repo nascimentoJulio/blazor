@@ -2,19 +2,19 @@
 @inject NavigationManager NavigationManager
 
 <head>
-     <script src="~/js/alertHelper.js"></script>
+    <script src="~/js/alertHelper.js"></script>
     <script src="~/js/localStorageHelper.js"></script>
 </head>
+
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+    @if (ShowNavMenu)
+    {
+        <div class="sidebar">
+            <NavMenu />
+        </div>
+    }
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
-
         <article class="content px-4">
             @Body
         </article>
@@ -30,10 +30,25 @@
 @code {
     public bool ShowNavMenu { get; set; } = true;
 
-    protected override void OnParametersSet()
+    protected override void OnInitialized()
     {
-        // Verifica a URL atual para decidir se o menu deve ser exibido
-        var currentUri = NavigationManager.Uri;
-        ShowNavMenu = !currentUri.Contains("login", StringComparison.OrdinalIgnoreCase);
+        NavigationManager.LocationChanged += HandleLocationChanged;
+        UpdateNavMenuVisibility();
+    }
+
+    private void HandleLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        UpdateNavMenuVisibility();
+        StateHasChanged();
+    }
+
+    private void UpdateNavMenuVisibility()
+    {
+        ShowNavMenu = !NavigationManager.Uri.Contains("login", StringComparison.OrdinalIgnoreCase);
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= HandleLocationChanged;
     }
 }

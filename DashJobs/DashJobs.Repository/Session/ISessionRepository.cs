@@ -1,4 +1,5 @@
-﻿using DashJobs.Repository.Models;
+﻿
+using DashJobs.Repository.Models;
 
 namespace DashJobs.Repository.Session
 {
@@ -7,6 +8,7 @@ namespace DashJobs.Repository.Session
 
         Task ExpiressSessions(Guid userId);
 
+        Task<Models.Session> GetSession(string sessionCode);
 
         Task CreateSession(Guid userId, Guid sessionCode);
     }

@@ -1,6 +1,8 @@
 ﻿@page "/login"
 @rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations
+@using DashJobs.Repository.Constants
+@using DashJobs.Repository.Models
 @using DashJobs.Services.Users
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject IUserService IUserService;
@@ -44,7 +46,7 @@
         try
         {
             var session = await IUserService.Login(LoginFormModel.Email, LoginFormModel.Password);
-            await ProtectedSessionStore.SetAsync("SESSION", session);
+            await ProtectedSessionStore.SetAsync(Storage.SESSION, session);
             NavigationManager.NavigateTo("/");
         }
         catch (Exception ex)
