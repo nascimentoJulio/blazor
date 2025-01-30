@@ -26,6 +26,19 @@ namespace DashJobs.Repository.Sessions
                            where user_id = @UserId", new { UserId = userId });
 
         }
+
+        public async Task<Session> GetSession(string sessionCode)
+        {
+            return await GetById(@"SELECT 
+                                id as Id,
+                                created_at as CreatedAt,
+                                user_id as UserId,
+                                expired as Expired,
+                                session_code as SessionCode
+                            FROM sessions
+                            WHERE session_code = @SessionCode
+                           ", new { SessionCode = sessionCode });
+        }
     }
 
 

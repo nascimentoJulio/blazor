@@ -1,0 +1,67 @@
+﻿@page "/login"
+@rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations
+@using DashJobs.Repository.Constants
+@using DashJobs.Services.Users
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject IUserService IUserService
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager NavigationManager;
+
+
+<h3>Login</h3>
+
+<EditForm Model="LoginFormModel" OnValidSubmit="HandleLogin" FormName="LoginForm">
+
+     <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Email">Email:</label>
+        <InputText id="Email" @bind-Value="LoginFormModel.Email" class="form-control" />
+        <ValidationMessage For="@(() => LoginFormModel.Email)" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <InputText id="password" @bind-Value="LoginFormModel.Password" type="password" class="form-control" />
+        <ValidationMessage For="@(() => LoginFormModel.Password)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</EditForm>
+
+@ErrorMessage
+
+@code{
+    [SupplyParameterFromForm]
+    private LoginModel LoginFormModel { get; set; }
+
+    private string ErrorMessage { get; set; }
+
+    protected override void OnInitialized() => LoginFormModel ??= new();
+
+
+    private async Task HandleLogin()
+    {
+        try
+        {
+            var session = await IUserService.Login(LoginFormModel.Email, LoginFormModel.Password);
+            await ProtectedSessionStore.SetAsync(Storage.SESSION, session);
+            NavigationManager.NavigateTo("/");
+
+        }catch(Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+    }
+
+    public class LoginModel
+    {
+        [Required]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        public string Password { get; set; } = string.Empty;
+    }
+}

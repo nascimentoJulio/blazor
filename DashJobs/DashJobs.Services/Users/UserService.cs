@@ -3,6 +3,7 @@ using Dashclass.Model;
 using DashJobs.Repository.Sessions;
 using DashJobs.Repository.Users;
 using DashJobs.Services.Dto;
+using DashJobs.Services.Exceptions;
 using Sodium;
 
 
@@ -74,5 +75,30 @@ namespace DashJobs.Services.Users
             return PasswordHash.ArgonHashStringVerify(userPassword, password);
         }
 
+        public async Task<bool> IsAuthenticated(string sessionCode, Roles[] roles)
+        {
+            if (string.IsNullOrEmpty(sessionCode))
+                throw new UnauthenticatedException();
+
+            var session = await _sessionRepository.GetSession(sessionCode);
+            if (session == null)
+                throw new UnauthenticatedException();
+
+            var user = await _usersRepository.GetUserById(session.UserId);
+            if (user == null)
+                throw new UnauthenticatedException();
+
+            var isAdmin = user.Roles.Equals(Roles.ADMINISTRATIVE);
+            bool isSessionExpired = (DateTime.UtcNow - session.CreatedAt).TotalHours >= 2;
+
+            if (session.Expired || isSessionExpired)
+                throw new UnauthenticatedException();
+
+            if (roles.Length != 0 && (!isAdmin || !roles.Contains(user.Roles)))
+                throw new UnauthorizedException();
+
+            return true;
+
+        }
     }
 }

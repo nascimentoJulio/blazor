@@ -12,5 +12,7 @@ namespace DashJobs.Repository.Users
         Task Insert(User user);
 
         Task<User> GetUserByEmail(string email);
+
+        Task<User> GetUserById(Guid userId);
     }
 }

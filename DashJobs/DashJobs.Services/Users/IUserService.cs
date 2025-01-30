@@ -1,9 +1,7 @@
-﻿using DashJobs.Services.Dto;
+﻿using Dashclass.Constants;
+using DashJobs.Services.Dto;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DashJobs.Services.Users
 {
@@ -12,5 +10,7 @@ namespace DashJobs.Services.Users
         Task CreateUser(CreateUserDto createUserDto);
 
         Task<Guid> Login(string email, string password);
+
+        Task<bool> IsAuthenticated(string sessionCode, Roles[] roles);
     }
 }

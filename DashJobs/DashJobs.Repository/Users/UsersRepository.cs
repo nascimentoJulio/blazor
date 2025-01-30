@@ -29,6 +29,19 @@ namespace DashJobs.Repository.Users
                                    WHERE Email = @Email", new { Email = email });
         }
 
+        public async Task<User> GetUserById(Guid userId)
+        {
+            return await GetById(@"SELECT
+                                    id as Id, 
+                                    created_at as CreatedAt, 
+                                    username as Username, 
+                                    email as Email, 
+                                    password as Password, 
+                                    role as Roles
+                                   FROM users
+                                   WHERE Id = @Id", new { Id = userId });
+        }
+
         public async Task Insert(User user)
         {
             await _connection.ExecuteAsync(@"INSERT INTO users

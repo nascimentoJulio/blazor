@@ -1,7 +1,16 @@
 ﻿@page "/candidates"
+@rendermode InteractiveServer
+@using DashJobs.Repository.Constants
 @using DashJobs.Services.Candidates
+@using DashJobs.Services.Exceptions
+@using DashJobs.Services.Users
+@using Dashclass.Constants
 @using Dashclass.Model
 @attribute [StreamRendering]
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager NavigationManager;
+
 
 <PageTitle>Candidates</PageTitle>
 
@@ -38,15 +47,44 @@ else
     [Inject]
     public ICandidatesService _candidatesService { get; set; }
 
-    public IEnumerable<Candidate> candidates { get; set; }
+    [Inject]
+    public IUserService IUserService { get; set; }
 
-    public bool IsLoading = false;
+    public IEnumerable<Candidate> candidates { get; set; } = new List<Candidate>();
 
-    protected override async Task OnInitializedAsync()
+    public bool IsLoading = true;
+    private bool isInitialized = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        IsLoading = true;
-        candidates = await _candidatesService.GetCandidates();
-        IsLoading = false;
+        if (firstRender)
+        {
+            try
+            {
+                var sessionResult = await ProtectedSessionStore.GetAsync<string>(Storage.SESSION);
+                var session = sessionResult.Success ? sessionResult.Value : "";
+                var isAuthenticated = await IUserService.IsAuthenticated(session, [Roles.ADMINISTRATIVE]);
+
+                if (isAuthenticated)
+                {
+                    candidates = await _candidatesService.GetCandidates();
+                }
+            }
+            catch (UnauthenticatedException)
+            {
+                NavigationManager.NavigateTo("/login");
+            }
+            catch (UnauthorizedException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                IsLoading = false;
+                isInitialized = true;
+                StateHasChanged();
+            }
+        }
     }
 
 }
