@@ -16,6 +16,6 @@ jobs:
       - name: Build e Push para o Render
         run: |
           docker build -t blazor-app .
-          docker tag blazor-app registry.render.com/seu-repositorio
+          docker tag blazor-app registry.render.com/blazor
           docker login -u render -p rnd_ruGXV9YUasiIVIkX4GV2luNl1xji registry.render.com
-          docker push registry.render.com/seu-repositorio
+          docker push registry.render.com/blazor
