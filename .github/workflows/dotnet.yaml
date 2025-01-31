@@ -3,7 +3,7 @@ name: Deploy Blazor Server to Render
 on:
   push:
     branches:
-      - main  # Altere para sua branch principal
+      - main # Altere para sua branch principal
 
 jobs:
   build-and-deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Instalar .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.0'  # Altere conforme a versão do seu projeto
+          dotnet-version: "8.0" # Altere conforme a versão do seu projeto
 
       - name: Restaurar dependências
         run: dotnet restore
@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy no Render
         run: |
-          curl -X POST "https://api.render.com/v1/services//deploys" \
+          curl -X POST "https://api.render.com/v1/services/deploys" \
           -H "Authorization: Bearer rnd_ruGXV9YUasiIVIkX4GV2luNl1xji" \
           -H "Accept: application/json" \
           -H "Content-Type: application/json" \
