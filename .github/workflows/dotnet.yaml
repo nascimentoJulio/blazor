@@ -26,7 +26,7 @@ jobs:
 
       - name: Deploy no Render
         run: |
-          curl -X POST "https://api.render.com/v1/services/deploys" \
+          curl -X POST "https://api.render.com/v1/services/srv-cudpvjogph6c73fg1ssg/deploys" \
           -H "Authorization: Bearer rnd_ruGXV9YUasiIVIkX4GV2luNl1xji" \
           -H "Accept: application/json" \
           -H "Content-Type: application/json" \
