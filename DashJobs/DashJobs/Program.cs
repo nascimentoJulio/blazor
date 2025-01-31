@@ -37,10 +37,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+
 app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-app.Run();
+app.Run($"http://0.0.0.0:{port}");

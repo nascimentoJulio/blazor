@@ -34,7 +34,7 @@ namespace DashJobs.Repository
             return await _connection.ExecuteAsync(query);
         }
 
-        public async Task<int> Update(string query, object[] parameters)
+        public async Task<int> Update(string query, object parameters)
         {
             return await _connection.ExecuteAsync(query, parameters);
         }

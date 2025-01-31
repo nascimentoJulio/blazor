@@ -1,0 +1,21 @@
+name: Deploy Blazor Server with Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Build e Push para o Render
+        run: |
+          docker build -t blazor-app .
+          docker tag blazor-app registry.render.com/seu-repositorio
+          docker login -u render -p rnd_ruGXV9YUasiIVIkX4GV2luNl1xji registry.render.com
+          docker push registry.render.com/seu-repositorio
