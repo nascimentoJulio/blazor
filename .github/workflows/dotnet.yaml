@@ -1,21 +1,33 @@
-name: Deploy Blazor Server with Docker
+name: Deploy Blazor Server to Render
 
 on:
   push:
     branches:
-      - main
+      - main  # Altere para sua branch principal
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
 
-      - name: Build e Push para o Render
+      - name: Instalar .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0'  # Altere conforme a versão do seu projeto
+
+      - name: Restaurar dependências
+        run: dotnet restore
+
+      - name: Compilar e publicar a aplicação
+        run: dotnet publish -c Release -o out
+
+      - name: Deploy no Render
         run: |
-          docker build -t blazor-app .
-          docker tag blazor-app registry.render.com/blazor
-          docker login -u render -p rnd_ruGXV9YUasiIVIkX4GV2luNl1xji registry.render.com
-          docker push registry.render.com/blazor
+          curl -X POST "https://api.render.com/v1/services//deploys" \
+          -H "Authorization: Bearer rnd_ruGXV9YUasiIVIkX4GV2luNl1xji" \
+          -H "Accept: application/json" \
+          -H "Content-Type: application/json" \
+          -d '{}'
